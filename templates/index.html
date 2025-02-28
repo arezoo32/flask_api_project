@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه پیش‌بینی روند موضوعات علمی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        
+        body {
+            font-family: "IRANSans", sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #0D3B66 20%, #ffffff 80%);
+            color: #0D3B66;
+            direction: rtl;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.698);
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2rem;
+            text-align: center;
+            color: #ffffff;
+            background: #0D3B66;
+            padding: 10px 20px;
+            border-radius: 10px;
+            width: fit-content;
+            margin: 20px auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #0c0246;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #02000e;
+        }
+        .stats-box {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.2);
+        }
+        .infographic {
+            max-width: 60%;  
+            height: auto;  
+            display: block;
+            margin: 30px auto;  
+            border-radius: 15px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        input {
+            padding: 12px;
+            font-size: 1.1em;
+            margin-top: 15px;
+            border-radius: 10px;  
+            border: 2px solid #0D3B66;  
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            border-color: #FFD700;  /* Gold border when focused */
+            box-shadow: 0px 2px 10px rgba(255, 215, 0, 0.5);
+        }
+        button {
+            background-color: #FFD700;
+            color: #0D3B66;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #FFC107; 
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+            transform: scale(1.05);
+        }
+        img {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        select {
+            padding: 12px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            border: 2px solid #0D3B66;
+            margin-top: 15px;
+            width: 30%; 
+            text-align: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+        #messageArea {
+            margin-top: 20px;  
+            font-size: 1.1em;
+            color: #0c0246;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>به سامانه پیش‌بینی روند موضوعات علمی در طول زمان خوش آمدید</h1>
+        <p><span class="highlight">روند موضوعات علمی</span> به تغییرات و تحولات در حوزه‌های تحقیقاتی و موضوعات مقالات علمی در طول زمان اشاره دارد. این روند شامل ظهور و افول موضوعات، تغییرات در اولویت‌های تحقیقاتی و ایجاد ارتباطات جدید بین حوزه‌های علمی است.</p>
+        <p>
+            با توجه به حجم عظیم مقالات علمی منتشرشده، تحلیل دستی این روندها عملاً غیرممکن است.
+            هدف این سامانه ارائه سیستمی خودکار است که قادر به تحلیل روند موضوعات علمی و پیش‌بینی ارتباطات برجسته‌تر میان موضوعات علمی می‌باشد.
+        </p>
+        <img src="/static/plots/infographic.jpg" alt="مراحل سیستم پیش‌بینی روند موضوعات علمی" class="infographic">
+        <div class="stats-box">
+            <h2>آمار مجموعه داده</h2>
+            <p> مجموعه داده‌های مورد استفاده شامل مقالات علمی مرتبط با حوزه هوش مصنوعی و علوم مرتبط است.</p>
+            <p>این داده‌ها از پایگاه داده معتبر Web Of Science جمع‌آوری شده و شامل 76555 مقاله منتشر شده بین سال‌های 1985 تا 2024 هستند.</p>
+        </div>
+        <img src="/static/plots/download.png" alt="نمودار توزیع مقالات در طول سال‌ها">
+        <p class="description">در شکل فوق، توزیع تعداد مقالات علمی در طول سال‌های مختلف نشان داده شده است.</p>
+        <img src="/static/plots/semantic_changes.png" alt="تغییر معنایی ۵ کلمه در طول ۳۵ سال">
+        <p class="description">در شکل فوق، نمونه‌ای از نحوه تغییر معنای ۵ کلمه علمی در طی ۳۵ سال نمایش داده شده است.که هر رنگ نشان‌دهنده‌ی یک کلمه خاص می‌باشد.</p>
+        
+        <img src="/static/plots/structural_changes.png" alt="تغییر ساختاری ۵ کلمه در طول ۳۵ سال">
+        <p class="description">در این تصویر، نحوه تغییر ساختار ۵ کلمه علمی در طول ۳۵ سال نشان داده شده است که هر رنگ نشان‌دهنده‌ی یک کلمه خاص می‌باشد.</p>
+        
+        <p>ما با مدل‌سازی تغییرات معنایی و ساختاری کلمات علمی در طول زمان، تعبیه‌های معنایی کلمات را پیش‌بینی کرده و سپس این تعبیه‌ها را خوشه‌بندی می‌کنیم. در نهایت، ارتباطات بین این خوشه‌های مفاهیمی جدید را با مدل دیگری استخراج می‌نماییم.</p>
+        
+        <h3>ارتباطات خوشه‌های علمی در طول سال‌ها</h3>
+        <p>در شکل‌های زیر، نقشه‌های گرمایی ارتباطات بین خوشه‌های علمی برای چهار سال متوالی نمایش داده شده است. رنگ‌های پررنگ‌تر نشان‌دهنده ارتباطات قوی‌تر و رنگ‌های کم‌رنگ‌تر بیانگر ارتباطات ضعیف‌تر هستند.</p>
+        
+        <img src="/static/plots/heatmap_1.png" alt="نقشه گرمایی ارتباطات بین خوشه‌ها - سال 2020">
+        <img src="/static/plots/heatmap_2.png" alt="نقشه گرمایی ارتباطات بین خوشه‌ها - سال 2021">
+        <img src="/static/plots/heatmap_3.png" alt="نقشه گرمایی ارتباطات بین خوشه‌ها - سال 2022">
+        <img src="/static/plots/heatmap_4.png" alt="نقشه گرمایی ارتباطات بین خوشه‌ها - سال 2023">
+        
+        <div>
+            <h3>انتخاب سال برای مشاهده پیش‌بینی‌ها</h3>
+            <!-- Dropdown for Year Selection -->
+            <select id="yearSelect">
+                <!-- Add years dynamically from 1988 to 2024 -->
+                <option value="1988">1988</option>
+                <option value="1989">1989</option>
+                <option value="1990">1990</option>
+                <option value="1991">1991</option>
+                <option value="1992">1992</option>
+                <option value="1993">1993</option>
+                <option value="1994">1994</option>
+                <option value="1995">1995</option>
+                <option value="1996">1996</option>
+                <option value="1997">1997</option>
+                <option value="1998">1998</option>
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+            </select>
+
+            <!-- Button to Trigger Prediction -->
+            <button id="viewForecastsBtn">مشاهده پیش‌بینی‌ها</button>
+        </div>
+        <!-- Message Area -->
+        <div id="messageArea"></div>
+        <p><a href="https://github.com/your-repo-link" style="color: rgb(4, 25, 208); font-weight: bold;"> تمام کدهای تحقیق در github موجود است. </a></p>
+    </div>
+    <script>
+    document.getElementById('viewForecastsBtn').addEventListener('click', function() {
+    var selectedYear = document.getElementById('yearSelect').value;
+
+    // Show loading message in Persian
+    document.getElementById('messageArea').innerText = "در حال پردازش... لطفاً صبر کنید.";
+
+    // Make a POST request to predict embeddings
+    fetch('/predict_embeddings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ year: selectedYear }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        let resultText = "";
+
+        // نمایش 5 جفت خوشه برتر
+        if (data.top_5_cluster_pairs) {
+            resultText += "۵ جفت خوشه با بیشترین وزن:\n";
+            resultText += data.top_5_cluster_pairs.join('\n') + "\n\n";
+        } else {
+            resultText += "خطایی رخ داده است: " + data.error + "\n";
+        }
+
+        // نمایش خوشه‌ای که بالاترین وزن را دارد و کلمات داخل آن
+        if (data.highest_weight_cluster) {
+            let highestCluster = data.highest_weight_cluster;
+            resultText += "بالاترین وزن بین خوشه‌ها:\n";
+            resultText += `جفت خوشه: ${highestCluster.cluster_1_name}, ${highestCluster.cluster_2_name}, وزن: ${highestCluster.weight}\n\n`;
+            resultText += `${highestCluster.cluster_1_name}\n` + highestCluster.words_in_cluster_1.join(', ') + "\n\n";
+            resultText += `${highestCluster.cluster_2_name}\n` + highestCluster.words_in_cluster_2.join(', ');
+        } else {
+            resultText += "خطایی در دریافت خوشه با بیشترین وزن رخ داده است.";
+        }
+
+        document.getElementById('messageArea').innerText = resultText;
+    })
+    .catch(error => {
+        // Show error if something goes wrong
+        document.getElementById('messageArea').innerText = "یک خطای غیرمنتظره رخ داده است.";
+    });
+});
+
+
+    </script>
+</body>
+</html>

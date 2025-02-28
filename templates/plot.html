@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plots - Scientific Trends API</title>
+</head>
+<body>
+    <h1>Scientific Trends Analysis</h1>
+
+    <h2> تعداد مقالات در هر سال </h2>
+    <img src="{{ url_for('static', filename='plots/publication_count_per_year.png') }}" alt="Publications Plot">
+
+    <h2>Number of Words Per Year (1985-2024)</h2>
+    <img src="{{ url_for('static', filename='plots/num_words_per_year.png') }}" alt="Words Per Year Plot">
+</body>
+</html>
