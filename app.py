@@ -49,13 +49,6 @@ if os.path.exists(model2_filename):
 else:
     raise FileNotFoundError(f"Model file not found: {model2_filename}")
 
-# مسیر ذخیره مدل
-# file_path = "D:\\bagheri"    
-# model_filename = "lstm_model2.h5"
-# model_path = os.path.join(file_path, model_filename)
-
-# # بارگذاری مدل
-# model_lstm = load_model(model_path)
 
 
 # صفحه اصلی
@@ -119,8 +112,7 @@ def predict_embeddings():
         
         # اضافه کردن کد برای محاسبه ارتباط بین خوشه‌ها
         # بارگذاری داده‌های نرمال‌شده
-        # file_path = "D:\\bagheri"
-        # normalized_df = pd.read_csv(f'{file_path}/normalized_windowed_cluster_relationships.csv')
+        
         normalized_file  = os.path.join(DATA_DIR, "normalized_windowed_cluster_relationships.csv")
         if os.path.exists(normalized_file ):
             normalized_df = pd.read_csv(normalized_file)
@@ -210,17 +202,6 @@ def predict_embeddings():
         for word, cluster_label in zip(wordsyear, predicted_cluster_labels_year):
             predicted_clusters_year[cluster_label].append(word)
 
-        # # load yearly clusters and centroids  
-        # file_path = "D:\\bagheri"
-        # with open(f'{file_path}/yearly_clusters.pkl', 'rb') as clusters_file:
-        #     yearly_clusters = pickle.load(clusters_file)
-
-        # with open(f'{file_path}/yearly_centroids.pkl', 'rb') as centroids_file:
-        #     yearly_centroids = pickle.load(centroids_file)
-        
-        # with open(f'{file_path}/consistent_cluster_names.pkl', 'rb') as f:
-        #     cluster_names = pickle.load(f)
-            
 
         cluster_file = os.path.join(DATA_DIR, "yearly_clusters.pkl")
         if os.path.exists(cluster_file):
