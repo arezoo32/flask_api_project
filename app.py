@@ -41,13 +41,21 @@ else:
     raise FileNotFoundError(f"Data file not found: {data_filename}")
 
 
-# مسیر ذخیره مدل
-file_path = "D:\\bagheri"    
-model_filename = "lstm_model2.h5"
-model_path = os.path.join(file_path, model_filename)
 
-# بارگذاری مدل
-model_lstm = load_model(model_path)
+model2_filename = os.path.join(MODEL_DIR, "lstm_model2.h5")
+if os.path.exists(model2_filename):
+    model_lstm = load_model(model2_filename)
+    print("Model2 loaded successfully!")
+else:
+    raise FileNotFoundError(f"Model file not found: {model2_filename}")
+
+# مسیر ذخیره مدل
+# file_path = "D:\\bagheri"    
+# model_filename = "lstm_model2.h5"
+# model_path = os.path.join(file_path, model_filename)
+
+# # بارگذاری مدل
+# model_lstm = load_model(model_path)
 
 
 # صفحه اصلی
@@ -106,12 +114,20 @@ def predict_embeddings():
 
         # Persian message to return
         print("word2vec prediction made successfully")
+        
+        
+        
         # اضافه کردن کد برای محاسبه ارتباط بین خوشه‌ها
         # بارگذاری داده‌های نرمال‌شده
-        file_path = "D:\\bagheri"
-        normalized_df = pd.read_csv(f'{file_path}/normalized_windowed_cluster_relationships.csv')
+        # file_path = "D:\\bagheri"
+        # normalized_df = pd.read_csv(f'{file_path}/normalized_windowed_cluster_relationships.csv')
+        normalized_file  = os.path.join(DATA_DIR, "normalized_windowed_cluster_relationships.csv")
+        if os.path.exists(normalized_file ):
+            normalized_df = pd.read_csv(normalized_file)
+            print("normalized_df loaded successfully!")
+        else:
+            raise FileNotFoundError(f"normalized_df not found: {normalized_file}")
 
-    
         testing_data_lstm = normalized_df[normalized_df['start_year'] == year - 3]
         testing_data_lstm = testing_data_lstm.reset_index(drop=True)
         testing_data_lstm['normalized_weights'] = testing_data_lstm['normalized_weights'].apply(ast.literal_eval)
@@ -194,16 +210,44 @@ def predict_embeddings():
         for word, cluster_label in zip(wordsyear, predicted_cluster_labels_year):
             predicted_clusters_year[cluster_label].append(word)
 
-        # Save yearly clusters and centroids to pickle files
-        file_path = "D:\\bagheri"
-        with open(f'{file_path}/yearly_clusters.pkl', 'rb') as clusters_file:
-            yearly_clusters = pickle.load(clusters_file)
+        # # load yearly clusters and centroids  
+        # file_path = "D:\\bagheri"
+        # with open(f'{file_path}/yearly_clusters.pkl', 'rb') as clusters_file:
+        #     yearly_clusters = pickle.load(clusters_file)
 
-        with open(f'{file_path}/yearly_centroids.pkl', 'rb') as centroids_file:
-            yearly_centroids = pickle.load(centroids_file)
+        # with open(f'{file_path}/yearly_centroids.pkl', 'rb') as centroids_file:
+        #     yearly_centroids = pickle.load(centroids_file)
         
-        with open(f'{file_path}/consistent_cluster_names.pkl', 'rb') as f:
-            cluster_names = pickle.load(f)
+        # with open(f'{file_path}/consistent_cluster_names.pkl', 'rb') as f:
+        #     cluster_names = pickle.load(f)
+            
+
+        cluster_file = os.path.join(DATA_DIR, "yearly_clusters.pkl")
+        if os.path.exists(cluster_file):
+            with open(cluster_file, 'rb') as clusters_file:
+                yearly_clusters = pickle.load(clusters_file)
+            print("cluster_file loaded successfully!")
+        else:
+            raise FileNotFoundError(f"clusters file not found: {cluster_file}")
+        
+        centroid_file = os.path.join(DATA_DIR, "yearly_centroids.pkl")
+        if os.path.exists(centroid_file):
+            with open(centroid_file, 'rb') as centroids_file:
+                yearly_centroids = pickle.load(centroids_file)
+            print("centroid_file loaded successfully!")
+        else:
+            raise FileNotFoundError(f"clusters file not found: {cluster_file}")
+        
+
+        cluster_names_file = os.path.join(DATA_DIR, "consistent_cluster_names.pkl")
+        if os.path.exists(cluster_names_file):
+            with open(cluster_names_file, 'rb') as f:
+                cluster_names = pickle.load(f)
+            print("cluster_names_file loaded successfully!")
+        else:
+            raise FileNotFoundError(f"cluster names file not found: {cluster_names_file}")
+        
+        
 
         # Initialize Munkres instance
         munkres = Munkres()
