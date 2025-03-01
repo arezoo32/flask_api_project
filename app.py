@@ -18,6 +18,11 @@ import gdown
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # دریافت پورت از متغیر محیطی
+    app.run(host="0.0.0.0", port=port)
+
+
 # تنظیم مسیرهای دایرکتوری
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # مسیر اصلی پروژه
 MODEL_DIR = os.path.join(BASE_DIR, "models")  # پوشه مدل‌ها
