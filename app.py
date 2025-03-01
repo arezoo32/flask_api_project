@@ -9,6 +9,12 @@ from flask import Flask, request, jsonify, render_template
 import os
 import pickle
 from munkres import Munkres
+import os
+import gdown
+
+
+
+
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -31,14 +37,35 @@ if os.path.exists(model_filename):
 else:
     raise FileNotFoundError(f"Model file not found: {model_filename}")
 
-# بارگذاری داده‌های ترکیبی
-data_filename = os.path.join(DATA_DIR, "combined_dataset_dgi100.pkl")
-if os.path.exists(data_filename):
-    with open(data_filename, 'rb') as file:
+
+# شناسه فایل در گوگل درایو
+file_id = "1H6R4IdYNO67eyaDoeVh7PwgeZ_zosbi1"
+DATA_FILE = "combined_dataset_dgi100.pkl"  # نام فایل داده
+
+# اگر فایل وجود نداشت، دانلود کن
+if not os.path.exists(DATA_FILE):
+    print("Downloading dataset from Google Drive...")
+    gdown.download(f"https://drive.google.com/uc?id={file_id}", DATA_FILE, quiet=False)
+
+# بارگذاری داده‌ها از فایل
+if os.path.exists(DATA_FILE):
+    with open(DATA_FILE, 'rb') as file:
         combined_dataset_dgi100 = pickle.load(file)
-    print("combined_dataset_dgi100 loaded successfully!")
+    print("✅ combined_dataset_dgi100 loaded successfully!")
 else:
-    raise FileNotFoundError(f"Data file not found: {data_filename}")
+    raise FileNotFoundError(f"❌ Data file not found: {DATA_FILE}")
+
+
+
+
+# # بارگذاری داده‌های ترکیبی
+# data_filename = os.path.join(DATA_DIR, "combined_dataset_dgi100.pkl")
+# if os.path.exists(data_filename):
+#     with open(data_filename, 'rb') as file:
+#         combined_dataset_dgi100 = pickle.load(file)
+#     print("combined_dataset_dgi100 loaded successfully!")
+# else:
+#     raise FileNotFoundError(f"Data file not found: {data_filename}")
 
 
 
@@ -112,7 +139,7 @@ def predict_embeddings():
         
         # اضافه کردن کد برای محاسبه ارتباط بین خوشه‌ها
         # بارگذاری داده‌های نرمال‌شده
-        
+
         normalized_file  = os.path.join(DATA_DIR, "normalized_windowed_cluster_relationships.csv")
         if os.path.exists(normalized_file ):
             normalized_df = pd.read_csv(normalized_file)
