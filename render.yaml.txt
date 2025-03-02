@@ -1,7 +1,0 @@
-services:
-  - type: web
-    name: flask_api_project
-    env: python  # محیط اجرای پایتون
-    python_version: 3.6  # نسخه پایتون موردنظر
-    buildCommand: "pip install -r requirements.txt"  # دستور نصب پکیج‌ها
-    startCommand: "python app.py"  # دستور اجرای برنامه
